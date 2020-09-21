@@ -1,0 +1,312 @@
+{% extends "header.html" %}
+<html>
+
+{% block body%}
+<!-- Below is used locally but not on server. May generate warnings. -->
+	<!script type="text/javascript" src="/Users/Pedram/Desktop/flaskr/jsmol/JSmol.min.js"><!/script>
+	<!script src="JmolPopIn.js" type="text/javascript"><!/script>
+	<!-- Below is used on server, but not locally. May generate warnings.-->
+	<script type="text/javascript" src="{{ url_for('static',filename='jsmol/JSmol.min.js') }}">
+	</script>
+	<script type="text/javascript">
+		var jmolApplet; //our viewer
+		var jmolInfo; //setup parameters
+
+		;(function() {
+
+		// Developers: The debugCode flag is checked in j2s/java/core.z.js, 
+		// and, if TRUE, skips loading the core methods, forcing those
+		// to be read from their individual directories. Set this
+		// true if you want to do some code debugging by inserting
+		// System.out.println, document.title, or alert commands
+		// anywhere in the Java or Jmol code.
+	
+		var s = document.location.search;
+		Jmol.debugCode = (s.indexOf("debugcode") >= 0);
+	
+	
+		jmol_isReady = function(jmolApplet) {
+		//TODO will need to activate widgets
+		}		
+	
+	
+		jmolInfo = { //default values
+			width: "100%",
+			height: "100%",
+			debug: false,
+			color: "0xFFFFFF",
+			addSelectionOptions: false,
+			serverURL: "http://chemapps.stolaf.edu/jmol/jsmol/php/jsmol.php", //you can change this to your own server.
+			use: "HTML5",
+			coverImage: "../static/OH.png",        // initial image instead of applet
+			coverScript: "",	// special script for click of cover image (otherwise equal to script)
+			deferApplet: false,                  // wait to load applet until click
+			deferUncover: true,                 // wait to uncover applet until script completed
+			//The paths below assume your server is set up with standard JSmol directory.  If not
+	    		//they will need modification for the page to work.
+	    		jarPath: "../../static/jsmol/java", //path to applet .jar files on server.
+			j2sPath: "../../static/jsmol/j2s",//path to javascript version.
+			makeLiveImg:"../../static/jsmol/j2s/img/play_make_live.jpg",//path to activate 3-D image.
+			jarFile: "JmolAppletSigned0.jar",
+			isSigned: true,
+			disableJ2SLoadMonitor: true,
+			//disableInitialConsole: true,
+			readyFunction: jmol_isReady,
+			script: "set antialiasDisplay;load ../../static/data/{{group}}p{{pos_group}}/cis/azo_cis_oh_p2.mol"
+			}
+
+		// ?_USE=JAVA   ?_USE=SIGNED   ?_USE=HTML5
+	   	if (s.indexOf("USE=") >= 0)
+	     	jmolInfo.use = s.split("USE=")[1].split("&")[0]
+	   	else if (s.indexOf("JAVA") >= 0)
+	     	jmolInfo.use = "JAVA"
+	   	else if (s.indexOf("IMAGE") >= 0)
+	     	jmolInfo.use = "IMAGE"
+	   	else if (s.indexOf("NOWEBGL") >= 0)
+		jmolInfo.use = "JAVA IMAGE"
+	   	else if (s.indexOf("WEBGL") >= 0)
+	     	jmolInfo.use = "WEBGL HTML5"
+	   	if (s.indexOf("NOWEBGL") >= 0)
+	     	jmolInfo.use = use.replace(/WEBGL/,"")
+	   	var useSignedApplet = (s.indexOf("SIGNED") >= 0);
+	   	if(useSignedApplet && jmolInfo.use == "HTML5") jmolInfo.use = "JAVA";
+	
+	   	var protocol = window.location.protocol.toLowerCase();
+	   	if (protocol == "file:") { 
+	    	jmolInfo.jarPath = "/Users/Pedram/Desktop/flaskr/jsmol/java";
+	    	jmolInfo.j2sPath = "/Users/Pedram/Desktop/flaskr/jsmol/j2s";
+	    	jmolInfo.makeLiveImg = "/Users/Pedram/Desktop/flaskr/jsmol/j2s/img/play_make_live.jpg";
+	    	jmolInfo.jarFile = "JmolAppletSigned.jar";
+	    	jmolInfo.isSigned= "true";
+	  	}
+		})();
+
+		Jmol.setDocument(document);
+
+		// notice that we are using no document.write() function here. All DOM-based.
+		// Jmol.getAppletHtml is working.
+
+		$(document).ready(function(){//set up each of the applet locations
+	    		$("#make_live_icon").attr('src',jmolInfo.makeLiveImg);
+	   		var jmolInfo0=jmolInfo;
+	   		jmolInfo0.coverImage="../../static/data/{{group}}/{{pos_group}}/trans/image.png";
+	   		jmolInfo0.script="load ../../static/OH1.spt";
+	   		$("#Jmol0").html(Jmol.getAppletHtml("jmolApplet0",jmolInfo0));
+		
+
+			});
+	</script>
+
+<div>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Azobenzene</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+	    <li><a href="/intro">Introduction</a></li>
+        <li><a href="/cmp_method">Computation Method</a></li>
+        <li class="dropdown; active" >
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Results st1<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            {% for fn in FUNCTIONAL_GROUP  %}
+	        <li><a href="/results/{{fn}}p3">{{fn}}</a></li>
+	        {% endfor %}
+          </ul>
+        </li>
+		<li><a href="/Tables">Tables<span class="sr-only"></span></a></li>
+      </ul>
+  
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+		<div class="container">
+			<table class="table">
+				  <thead>
+					<tr>
+					  <th><h2>Functionalized Molecule<small>(JSmol)</small></h2></th>
+					  </tr>
+				  </thead>
+				  <tbody>
+					<tr>
+					  <!td id="leftJmolCntl0" style="visibility:hidden;width:0;"></td>
+					  <td style="vertical-align: top; width: 100px; height: 100px;">
+					  <div id="Jmol0" class="JmolDiv" style="width: 400px; height: 400px;">Jmol0 will appear here.</div>
+					  </td>
+					</tr>
+					<tr>
+						<td>     
+						Click Image To Activate 3D Then Click On Load Isomer 
+						<br/> 
+						<a href="javascript:Jmol.loadFile(jmolApplet0,'../../static/data/{{group}}/{{pos_group}}/cis/{{group}}p{{pos_group}}_cis.mol')">Load <em>cis</em> Isomer</a>
+						<br/> 
+						<a href="javascript:Jmol.loadFile(jmolApplet0,'../../static/data/{{group}}/{{pos_group}}/trans/{{group}}p{{pos_group}}_trans.mol')">Load <em>trans</em> Isomer</a>
+			 			<br> 		
+			      		</td>
+					</tr>
+				</tbody>
+				</table>
+		<div class="container-fluid">
+			<h2>Histogram Plots</h2>
+				<table class="table">
+				  <thead>
+					<tr>
+					  <th></th>
+					  <th><em>Cis</em></th>
+					  <th><em>Trans</em></th>
+					</tr>
+				  </thead>
+				  <tbody>
+					<tr>
+					  <th scope="row">Angle</th>
+					  <td><image style="max-width:500px" src="{{ url_for('static',filename='data/'+group+'/'+pos_group+'/cis/angle_hist.png') }}"></td>
+					  <td><image style="max-width:500px" src="{{ url_for('static',filename='data/'+group+'/'+pos_group+'/trans/angle_hist.png') }}"></td>
+					</tr>
+					<tr>
+					    <th scope="row">Angle Info</th>
+						<td>
+							<table class="table">
+								<thead>
+									<tr>
+										<th></th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for t in angle_info_cis %}
+									<tr>
+										<th>{{t[0]}}</th>
+										<td>{{t[1]}}</td>
+									</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+						</td>
+						<td>
+							<table class="table">
+								<thead>
+									<tr>
+										<th></th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for t in angle_info_trans %}
+									<tr>
+										<th>{{t[0]}}</th>
+										<td>{{t[1]}}</td>
+									</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+						</td>
+					</tr>
+					
+					<tr>
+					  <th scope="row">Time</th>
+					  <td><image style="max-width:500px" src="{{ url_for('static',filename='data/'+group+'/'+pos_group+'/cis/timestep_hist.png') }}"></td>
+					  <td><image style="max-width:500px" src="{{ url_for('static',filename='data/'+group+'/'+pos_group+'/trans/timestep_hist.png') }}"></td>
+					</tr>
+					
+					<th scope="row">Time step Info</th>
+						<td>
+							<table class="table">
+								<thead>
+									<tr>
+										<th></th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for t in timestep_info_cis %}
+									<tr>
+										<th>{{t[0]}}</th>
+										<td>{{t[1]}}</td>
+									</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+						</td>
+						<td>
+							<table class="table">
+								<thead>
+									<tr>
+										<th></th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for t in timestep_info_trans %}
+									<tr>
+										<th>{{t[0]}}</th>
+										<td>{{t[1]}}</td>
+									</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+						</td>
+					</tr>
+					
+				 </tbody>
+				</table>
+			<h2>Energy Plots</h2>
+				<table class="table">
+					<thead>
+					<tr>
+					  <th></th>
+					  <th><em>Enrgy vs Angle </em></th>
+					  <th><em>Delta E</em></th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row"></th>
+							<td><image style="max-width:500px"src="{{ url_for('static',filename='data/'+group+'/'+pos_group+'/energy_vs_angle.png') }}"></td>
+							<td><image style="max-width:500px"src="{{ url_for('static',filename='data/'+group+'/'+pos_group+'/delta_E.png') }}"></td>
+						</tr>
+					</tbody>
+				</table>
+			<h2>Population</h2>
+				<table class="table">
+					<thead>
+					<tr>
+					  <th></th>
+					  <th><em>Cis </em></th>
+					  <th><em>Trans</em></th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row"></th>
+							<td><image style="max-width:500px"src="{{ url_for('static',filename='data/'+group+'/'+pos_group+'/cis/pop/population.png') }}"></td>
+							<td><image style="max-width:500px"src="{{ url_for('static',filename='data/'+group+'/'+pos_group+'/trans/pop/population.png') }}"></td>
+						</tr>
+						<tr>
+							<th scope="row"></th>
+							<td><image style="max-width:500px"src="{{ url_for('static',filename='data/'+group+'/'+pos_group+'/cis/pop/der_smooth.png') }}"></td>
+							<td><image style="max-width:500px"src="{{ url_for('static',filename='data/'+group+'/'+pos_group+'/trans/pop/der_smooth.png') }}"></td>
+						</tr>
+						<tr>
+							<th scope="row"></th>
+							<td><image style="max-width:500px"src="{{ url_for('static',filename='data/'+group+'/'+pos_group+'/cis/pop/fft.png') }}"></td>
+							<td><image style="max-width:500px"src="{{ url_for('static',filename='data/'+group+'/'+pos_group+'/trans/pop/fft.png') }}"></td>
+						</tr>
+					</tbody>
+				</table>		
+		</div>
+  	</div>
+	</div>
+{% endblock %}
+</html>

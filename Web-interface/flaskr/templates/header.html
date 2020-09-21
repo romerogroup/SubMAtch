@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title> FUNCTIONALIZED AZOBENZENE </title>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link href="{{ url_for('static',filename='css/bootstrap.min.css') }}" rel="stylesheet">
+	<link rel="shortcut icon" href="{{ url_for('static',filename='favicon.ico') }}">
+	
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+	</script>
+	<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+</head>
+
+
+<header>
+
+	<div class="navbar-header">
+	 
+	  <a class="navbar-brand" href="https://sites.google.com/site/jameslewisgroup/home">
+	  <image style="max-width:90px; margin-top: -7px;"src="{{ url_for('static',filename='images/lewis_group.png') }}">
+	  </a>
+	</div>
+
+	<ul class="nav nav-pills" role="tablist">
+	
+		
+</header>
+
+
+
+<body>
+	<div class="boearder-row" style="width: 100%; margin-bottom: 15px;"></div>
+	
+	<div class="container-fluid" style="min-height:100%">
+	
+	{% block body%}{% endblock %}
+	
+	
+		
+	</div>
+	<script src="//code.jquery.com/jquery-1.11.1.min.js">
+	</script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}">
+	</script>
+		
+	
+</body>
+
+
+
+
+</html>

@@ -1,0 +1,114 @@
+
+{% extends "header.html"%}
+
+{%block body %} 
+
+
+
+   <body>
+
+        <form  method= "POST" enctype = "multipart/form-data">
+            
+     
+            
+            <h1>Substrate Information </h1>
+            <div class="col-md-4 mb-3">
+            
+                <input type="file" class="custom-file-input" id="customFile" name="POSCAR_sub">
+                <label class="custom-file-label" for="customFile">POSCAR for substrate</label>
+            </div>
+            
+            <label for="Direction">Direction</label>
+            <div class="form-row">
+                <div class="col-md-1 mb-1">
+                    
+                    <input type="text" class="form-control" id="validationDefault05" placeholder="h" name="h_sub" required>
+                </div>
+                <div class="col-md-1 mb-1">
+                    
+                    <input type="text" class="form-control" id="validationDefault05" placeholder="k" name="k_sub" required>
+                </div>
+                <div class="col-md-1 mb-1">
+                    
+                    <input type="text" class="form-control" id="validationDefault05" placeholder="l" name="l_sub" required>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="col-md-2 mb-1">
+                    <label for="n_layer">Number of layers</label>
+                    <input type="text" class="form-control" id="validationDefault05" placeholder="" name="nlayers_substrate" required>
+                </div>
+
+                <div class="col-md-2 mb-1">
+                    <label for="min_thick">Minimum Slab Thickness</label>
+                    <input type="text" class="form-control" id="validationDefault05" placeholder="Angstroms" name="min_thick_sub" required>
+                </div>
+
+                <div class="col-md-2 mb-1">
+                    <label for="min_thick">Minimum Vacuum Spacing</label>
+                    <input type="text" class="form-control" id="validationDefault05" placeholder="Angstroms" name="min_vac_sub"  required>
+                </div>
+            </div> <!-- End of row form -->
+
+            
+        
+
+
+            <h1>2D slab Information </h1>
+            <div class="col-md-4 mb-3">
+                <input type="file" class="custom-file-input" id="customFile" name="POSCAR_2d">
+                <label class="custom-file-label" for="customFile">POSCAR for 2d surface</label>
+            </div>
+
+      
+            <label for="Direction">Direction</label>
+            <div class="form-row">
+                <div class="col-md-1 mb-1">
+                    
+                    <input type="text" class="form-control" id="validationDefault05" placeholder="h" name="h_2d" required>
+                </div>
+                <div class="col-md-1 mb-1">
+                    
+                    <input type="text" class="form-control" id="validationDefault05" placeholder="k" name="k_2d" required>
+                </div>
+                <div class="col-md-1 mb-1">
+                    
+                    <input type="text" class="form-control" id="validationDefault05" placeholder="l" name="l_2d" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col-md-2 mb-1">
+                    <label for="n_layer">Number of layers</label>
+                    <input type="text" class="form-control" id="validationDefault05" placeholder="" name="nlayers_2d" required>
+                </div>
+            </div>
+            <h1>General Information </h1>
+            <div class="form-row">
+            
+                <div class="col-md-2 mb-1">  
+                        <label for="separation">Separation</label>
+                        <input type="text" class="form-control" id="validationDefault05" placeholder="in Agstrom" name="separation" required>
+                </div>
+                <div class="col-md-2 mb-1">
+                <label for="max_area">Maximum Area</label>
+                        <input type="text" class="form-control" id="validationDefault05" placeholder="400" name="max_area" required>
+                </div>
+                
+                <div class="col-md-2 mb-1">
+                <label for="max_mismatch">Maximum Mismatch</label>
+                        <input type="text" class="form-control" id="validationDefault05" placeholder="0.05" name="max_mismatch" required>
+                </div>
+                
+                <div class="col-md-2 mb-1">
+                <label for="max_angle_diff">Maximum Angle Difference</label>
+                        <input type="text" class="form-control" id="validationDefault05" placeholder="1" name="max_angle_diff" required>
+                </div>
+                
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+			<p></p>
+  </div>
+</form>
+{% endblock %}

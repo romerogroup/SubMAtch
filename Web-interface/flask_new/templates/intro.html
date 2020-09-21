@@ -1,0 +1,68 @@
+{% extends "header.html" %}
+<html>
+
+{% block body%}
+
+
+<div>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Azobenzene</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+	    <li class="active"><a href="/intro">Introduction<span class="sr-only">(current)</span></a></li>
+        <li><a href="/cmp_method">Computation Method<span class="sr-only"></span></a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Results st1<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            {% for fn in FUNCTIONAL_GROUP  %}
+	        <li><a href="/results/{{fn}}p3">${{fn}}$</a></li>
+	        {% endfor %}
+            
+          </ul>
+        </li>
+
+		<li><a href="/Tables">Tables<span class="sr-only"></span></a></li>
+      </ul>
+  
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+		<ul>
+		<div class="container">
+			<h2>Photo-isomerization</h2>
+			<p>
+			Photo-isomerization is a kind of photoexcitation in which the molecule changes structure between isomers. This process can be both reversible and irreversible. This special property of some molecules can be applied to practical uses like molecular switches in Metal Organic Frameworks (MOFs), protein probes, molecular machines , etc.				
+			</p>
+			<img src="../static/images/photo_isomerization.png" class="img-center center-block" style="max-width:400px" alt="Cinque Terre"  >
+			<h2>Metal Organic Frameworks</h2>
+			<p>
+			Metal Organic Frameworks are comprised of two major components, metal ions and organic molecules which are usually called linkers. Metal ions and linkers can be coordinated in a way that they form a porous material. These porous materials can be used to store gas. If azobenzenes are used as linkers, by changing the isomerization of azobenzene we can either release the gas from the pores or create space for gas adsorption.
+			</p>
+			<img src="../static/images/MOF.png" class="img-center center-block" style="max-width:400px" alt="Cinque Terre"  >
+		</div>
+		</ul>
+		
+	
+	
+ 
+</div>
+</div>
+
+
+
+{% endblock %}
+</html>

@@ -1,0 +1,428 @@
+{% extends "header.html" %}
+<html>
+
+ {% block body  %}
+   <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Data Entry</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <form role="form">
+                                      <div class="form-group">
+             				    <label>First Author Name</label>
+					    <label class="sr-only" for="inlineFormInput">First Author Name</label>
+					    <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="Jane Doe">
+			    		    <label>Corresponding Email</label>
+					    <label class="sr-only" for="inlineFormInput">Corresponding Email</label>
+					    <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="Jane.doe@gmail.com">
+				      </div>
+					    <div class="form-group">
+                                              <label>Journal Abbreviation</label>
+                                              <input class="form-control">
+                                              <p class="help-block">Example: PRL ,JAP ,JPCM ,PRB ,APL</p>
+
+					      <label>Number of Pages</label>
+                                              <input class="form-control" placeholder="12">
+
+                                              <label>Publication Year</label>
+                                              <input class="form-control" placeholder="1988">
+
+                                              <label>DOI Number</label>
+                                              <input class="form-control" placeholder="10.10002">
+                                        </div>
+
+					<div class="form-group">
+					  <label class="control-label">LSMO</label>
+
+					  <div class="radio">
+					    <label class="radio-inline control-label">
+					      <input type="radio" id="yes" name="boolian" value="Yes" checked="">
+					      Yes
+					    </label>
+					  </div>
+					  <div class="radio">
+					    <label class="radio-inline control-label">
+					      <input type="radio" id="no" name="boolian" value="No" checked="">
+					      No
+					    </label>
+					  </div>
+					  <div class="radio">
+					    <label class="radio-inline control-label">
+					      <input type="radio" id="no" name="boolian" value="No" checked="">
+					      Doped
+					    </label>
+					  </div>
+		
+					  <div class="radio">
+					    <label class="radio-inline control-label">
+					      <input type="radio" id="amount_other" name="boolian" value="Other ">
+					      Other
+					    </label>
+					  </div>
+					</div>
+
+				      <div class="form-group">
+			    	        <label>xRatio</label>
+                                        <input class="form-control" placeholder="Include 2 decimal places">
+					<p class="help-block">Example: 0.70,0.67,0.40</p>
+                                      </div>
+				      
+
+					<div class="form-group">
+					  <label class="control-label">Substrate</label>
+					  <div class="radio">
+					    <label class="radio-inline control-label">
+					      <input type="radio" id="SrTiO_3" name="boolian" value="SrTiO_3" checked="">
+					      <div lang="latex">SrTiO_3</div>
+					    </label>
+					  </div>
+					  <div class="radio">
+					    <label class="radio-inline control-label">
+					      <input type="radio" id="Nb:SrTiO_3" name="boolian" value="Nb:SrTiO_3" checked="">
+					      <div lang="latex">Nb:SrTiO_3</div>
+					    </label>
+					  </div>
+					  <div class="radio">
+					    <label class="radio-inline control-label">
+					      <input type="radio" id="LaALO_3" name="boolian" value="LaAlO_3" checked="">
+					      <div lang="latex">LaAlO_3</div>
+					    </label>
+					  </div>
+					  <div class="radio">
+					    <label class="radio-inline control-label">
+					      <input type="radio" id="LSAT" name="boolian" value="LSAT" checked="">
+					      <div lang="latex">LSAT</div>
+					    </label>
+					  </div>
+					  <div class="radio">
+					    <label class="radio-inline control-label">
+					      <input type="radio" id="DyScO_3" name="boolian" value="DyScO_3" checked="">
+					      <div lang="latex">DyScO_3</div>
+					    </label>
+					  </div>
+					  <div class="radio">
+					    <label class="radio-inline control-label">
+					      <input type="radio" id="Si" name="boolian" value="Si" checked="">
+					      <div lang="latex">Si</div>
+					    </label>
+					  </div>
+					</div>
+					
+					<div class="form-group">
+					  <label class="control-label">Terminated Substrate</label>
+					  <div class="radio">
+					    <label class="radio-inline control-label">
+					      <input type="radio" id="yes" name="boolian" value="Yes" checked="">
+					      Yes
+					    </label>
+					  </div>
+					  <div class="radio">
+					    <label class="radio-inline control-label">
+					      <input type="radio" id="no" name="boolian" value="No" checked="">
+					      No
+					    </label>
+					  </div>
+					  <div class="radio">
+					    <label class="radio-inline control-label">
+					      <input type="radio" id="no" name="boolian" value="No" checked="">
+					      No Information
+					    </label>
+					  </div>
+					</div>
+
+					<div class="form-group">
+                                          <label>Thickness(nm)</label>
+                                          <input class="form-control">
+					</div>
+
+					<div class="form-group">
+                                          <label>Root Mean Square Roughness(nm)</label>
+                                          <input class="form-control">
+					</div>
+
+					<div class="form-group">
+                                          <label>During Growth Pressure</label>
+                                          <input class="form-control">
+					</div>
+
+					<div class="form-group">
+                                          <label>After Growth Pressure</label>
+                                          <input class="form-control">
+					  <p>Leave Blank if not mentioned.It often left the same.</p>
+					</div>
+
+					<div class="form-group">
+					      <label>Substrate Temperature (C)</label>
+                                              <input class="form-control" placeholder="Tc=TK+273.15">
+                                            </div>
+
+					    <div class="form-group">
+					      <label>Rate of deposition (A/sec)</label>
+                                              <input class="form-control" placeholder="">
+                                            </div>
+					    <div class="form-group">
+					      <label>Laser Frequency (Hz)</label>
+                                              <input class="form-control" placeholder="">
+                                            </div>
+
+					    <div class="form-group">
+					      <label>Fluence(cm2)</label>
+                                              <input class="form-control" placeholder="">
+                                            </div>
+					    <div class="form-group">
+					      <label>Growth Rate(A/sec)</label>
+                                              <input class="form-control" placeholder="">
+                                            </div>
+					    
+
+
+					    
+
+
+
+					
+                                        <div class="form-group">
+                                            <label>File input</label>
+                                            <input type="file">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Text area</label>
+                                            <textarea class="form-control" rows="3"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Checkboxes</label>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" value="">Checkbox 1
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" value="">Checkbox 2
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" value="">Checkbox 3
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Inline Checkboxes</label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox">1
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox">2
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox">3
+                                            </label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Radio Buttons</label>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>Radio 1
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Radio 2
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Radio 3
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Inline Radio Buttons</label>
+                                            <label class="radio-inline">
+                                                <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>1
+                                            </label>
+                                            <label class="radio-inline">
+                                                <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline2" value="option2">2
+                                            </label>
+                                            <label class="radio-inline">
+                                                <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline3" value="option3">3
+                                            </label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Selects</label>
+                                            <select class="form-control">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Multiple Selects</label>
+                                            <select multiple class="form-control">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            </select>
+                                        </div>
+                                        <button type="submit" class="btn btn-default">Submit Button</button>
+                                        <button type="reset" class="btn btn-default">Reset Button</button>
+                                    </form>
+                                </div>
+                                <!-- /.col-lg-6 (nested) -->
+                                <div class="col-lg-6">
+                                  <form role="form">
+
+				      <div class="form-group">
+					<label>Cool Rate(C/min)</label>
+                                        <input class="form-control" placeholder="">
+                                      </div>
+				      <div class="form-group">
+					<label>Data not included</label>
+                                        <input class="form-control" placeholder="">
+                                      </div>
+				      <div class="form-group">
+					<label>Substrate Peaks XYZ</label>
+                                        <input class="form-control" placeholder="">
+                                      </div>
+				      <div class="form-group">
+					<label>Film Peaks XYZ</label>
+                                        <input class="form-control" placeholder="">
+                                      </div>
+				      <div class="form-group">
+					<label>RockingCurvex(deg)</label>
+                                        <input class="form-control" placeholder="">
+                                      </div>
+				      <div class="form-group">
+					<label>Rocking CurveY Intensity (a.u.)</label>
+                                        <input class="form-control" placeholder="">
+                                      </div>
+				      <div class="form-group">
+					<label>	PhiX (deg)</label>
+                                        <input class="form-control" placeholder="">
+                                      </div>
+				      	<div class="form-group">
+					  <label class="control-label">Growth Method</label>
+					  <div class="radio">
+					    <label class="radio-inline control-label">
+					      <input type="radio" id="PLD" name="boolian" value="PLD" checked="">
+					      PLD
+					    </label>
+					  </div>
+					  <div class="radio">
+					    <label class="radio-inline control-label">
+					      <input type="radio" id="MBE" name="boolian" value="MBE" checked="">
+					      MBE
+					    </label>
+					  </div>
+					  <div class="radio">
+					    <label class="radio-inline control-label">
+					      <input type="radio" id="CVD" name="boolian" value="CVD" checked="">
+					      CVD
+					    </label>
+					  </div>
+					  <div class="radio">
+					    <label class="radio-inline control-label">
+					      <input type="radio" id="sol gel" name="boolian" value="CVD" checked="">
+					      sol gel
+					    </label>
+					  </div>
+					</div>
+
+				      
+				      
+				      
+                                      <fieldset disabled>
+                                            <div class="form-group">
+                                                <label for="disabledSelect">Disabled input</label>
+                                                <input class="form-control" id="disabledInput" type="text" placeholder="Disabled input" disabled>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="disabledSelect">Disabled select menu</label>
+                                                <select id="disabledSelect" class="form-control">
+                                                    <option>Disabled select</option>
+                                                </select>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox">Disabled Checkbox
+                                                </label>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Disabled Button</button>
+                                        </fieldset>
+                                    </form>
+                                    <h1>Form Validation States</h1>
+                                    <form role="form">
+                                        <div class="form-group has-success">
+                                            <label class="control-label" for="inputSuccess">Input with success</label>
+                                            <input type="text" class="form-control" id="inputSuccess">
+                                        </div>
+                                        <div class="form-group has-warning">
+                                            <label class="control-label" for="inputWarning">Input with warning</label>
+                                            <input type="text" class="form-control" id="inputWarning">
+                                        </div>
+                                        <div class="form-group has-error">
+                                            <label class="control-label" for="inputError">Input with error</label>
+                                            <input type="text" class="form-control" id="inputError">
+                                        </div>
+                                    </form>
+                                    <h1>Input Groups</h1>
+                                    <form role="form">
+                                        <div class="form-group input-group">
+                                            <span class="input-group-addon">@</span>
+                                            <input type="text" class="form-control" placeholder="Username">
+                                        </div>
+                                        <div class="form-group input-group">
+                                            <input type="text" class="form-control">
+                                            <span class="input-group-addon">.00</span>
+                                        </div>
+                                        <div class="form-group input-group">
+                                            <span class="input-group-addon"><i class="fa fa-eur"></i>
+                                            </span>
+                                            <input type="text" class="form-control" placeholder="Font Awesome Icon">
+                                        </div>
+                                        <div class="form-group input-group">
+                                            <span class="input-group-addon">$</span>
+                                            <input type="text" class="form-control">
+                                            <span class="input-group-addon">.00</span>
+                                        </div>
+                                        <div class="form-group input-group">
+                                            <input type="text" class="form-control">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-default" type="button"><i class="fa fa-search"></i>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- /.col-lg-6 (nested) -->
+                            </div>
+                            <!-- /.row (nested) -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+ 
+{% endblock  %}
+
+</html>

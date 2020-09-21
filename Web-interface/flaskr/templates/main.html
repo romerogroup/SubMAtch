@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en"{ 
+background: url(../static/images/bg.png) no-repeat center center fixed; 
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+}>
+This web interface is for surface matching purpose
+<head>
+	<meta charset="utf-8">
+	<title> 2d interface </title>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link href="{{ url_for('static',filename='css/bootstrap.min.css') }}" rel="stylesheet">
+	<link rel="shortcut icon" href="{{ url_for('static',filename='favicon.ico') }}">
+</head>
+
+<header>
+
+	<div class="navbar-header">
+	 
+	  <a class="navbar-brand" href="">
+	  <image style="max-width:90px; margin-top: -7px;"src="{{ url_for('static',filename='images/test.jpg') }}">
+	  </a>
+	</div>
+
+	<ul class="nav nav-pills" role="tablist">
+	<ul class="nav navbar-nav navbar-right">
+    	
+	 </ul>
+</header>
+
+
+
+<body>
+	<a href="/dashboard/">
+		
+	
+	<script src="//code.jquery.com/jquery-1.11.1.min.js">
+	</script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}">
+	</script>
+	
+</body>
+
+<footer class="page-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">You've reached the end!</h5>
+
+                <p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net.</p>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="/support-donate/">Support this Website!</a></li>
+                  <li><a class="grey-text text-lighten-3" href="/consulting/">Hire me</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/pythonprogramming.net/">Facebook</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://twitter.com/sentdex">Twitter</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://plus.google.com/+sentdex">Google+</a></li>
+                </ul>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h6 class="white-text">Legal stuff:</h6>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="/about/tos/">Terms and Conditions</a></li>
+                  <li><a class="grey-text text-lighten-3" href="/about/privacy-policy/">Privacy Policy</a></li>
+
+                </ul>
+              </div>
+            </div>
+          </div>
+          <a href="https://xkcd.com/353/" target='blank'><p class="grey-text right" style='padding-right:10px'>Programming is a superpower.</p></a>
+          <div class="footer-copyright">
+            <div class="container">
+            © OVER 9000! PythonProgramming.net
+
+            </div>
+
+          </div>
+        </footer>
+
+
+</html>

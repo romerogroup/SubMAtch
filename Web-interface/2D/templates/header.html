@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Material Surface Matching</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="{{url_for('static',filename='css/bootstrap.min.css')}}" rel="stylesheet">
+	<link rel="shortcut icon" href="{{url_for('static',filename='favicon.png')}}">
+</head>
+
+<header>
+
+	<div class="navbar-header">
+
+		<a class="navbar-brand" href="/">
+		<img style="max-width:120px;margin-top:-7px" src="{{url_for('static',filename='images/logo.png')}}">
+		</a>
+	</div>
+	
+	<nav class="nav nav-pills nav-fill" role="tablist">
+		<a class="nav-item nav-link {% if _id == 'home'%} active{% endif %}" href="/">Home</a>
+		<a class="nav-item nav-link {% if _id == 'matching'%} active {% endif %}" href="/matching">Matching</a>
+		<a class="nav-item nav-link {% if _id == 'substrate_search'%} active {% endif %}" href="/substrate_search"> Substrate Search</a>
+		<a class="nav-item nav-link" href="/">TEST</a>
+		<a class="nav-item nav-link {% if _id == 'about'%} active{% endif %}" href="/about">About</a>
+	</nav>
+	
+</header>
+
+
+
+
+<body>
+
+	<div class="border-row" style="width:100%; margin-bottom: 15px"></div>
+
+	<div class="container" align="left" style="min-hight:100%; min-width:90%">
+	
+	{% block body %} {% endblock %}
+	
+	</div>
+	
+	
+	<script src="//code.jquery.com/jquery-1.11.1.min.js">
+	</script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}">
+	</script>
+
+</body>
+
+<footer class="page-footer">
+	<div class="p-3 mb-2 bg-dark text-white">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">You've reached the end!</h5>
+
+                <p class="grey-text text-lighten-4">Contact: petavazohi@mix.wvu.edu.</p>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="/cite-info/">Citation Information</a></li>
+               
+                </ul>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h6 class="white-text">Legal stuff:</h6>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="/about/tos/">Terms and Conditions</a></li>
+                  <li><a class="grey-text text-lighten-3" href="/about/privacy-policy/">Privacy Policy</a></li>
+
+                </ul>
+              </div>
+            </div>
+          </div>
+ 
+          <div class="footer-copyright">
+            <div class="container">
+            
+
+            </div>
+
+          </div>
+	</div>
+</footer>
+
+
+</html>
+

@@ -1,0 +1,86 @@
+{% extends "header.html" %}
+<html>
+
+{% block body%}
+
+<div>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Azobenzene</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+	    <li><a href="/intro">Introduction</a></li>
+        <li class="active"><a href="/cmp_method">Computation Method<span class="sr-only">(current)</span></a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Results st1<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            {% for fn in FUNCTIONAL_GROUP  %}
+	            <li><a href="/results/{{fn}}p3">${{fn}}$</a></li>
+	        {% endfor %}
+          </ul>
+        </li>
+		<li><a href="/Tables">Tables<span class="sr-only"></span></a></li>
+      </ul>
+  
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+		<ul>
+		<div class="container">
+			<h2>Computation Method</h2>
+			<ul class="list-unstyled">
+				<li> <style="font-size: 16px"> <span class="glyphicon glyphicon-record"></span> <strong>Non-adiabatic Molecular dynamics </strong></li>
+				<p>
+					Schrödinger equation
+				</p>
+				<p>
+					$H_{KS}\phi _p(\textbf{r},t)=i\hbar \frac{\partial \phi _p(\textbf{r},t)}{\partial t}$
+				</p>
+				<p>
+					If we plug in the orbital exapnsion in adiabatic eigenstate
+				</p>
+				<p>
+					$\phi _p(\textbf{r},t)=\sum _i a_i(t)\psi _p(\textbf{r},\textbf{R})$
+				</p>
+				<p>
+					$i\hbar \frac{\partial a_i(t)}{\partial t}=a_i(t)\epsilon _i (R)-i\hbar \sum _j a_j(t)\textbf{d}_{ij}.\textbf{V}$
+				</p>
+				<p>
+					Non-adiabatic coupling vectors
+				</p>
+				<p>
+					$\textbf{d}_{ij}.\textbf{V} \equiv \sum _\alpha d_{ij}^\alpha \textbf{V}_\alpha \\ d_{ij}^\alpha\equiv <\psi_i|\frac{\partial \psi _j}{\partial \textbf{R}_\alpha}>$
+				
+				</p>
+					<li> <span class="glyphicon glyphicon-record"></span> <strong>Simulation</strong></a> </li>
+				<p>
+					<strong>FIREBALL</strong>: FIREBALL is a density functional theory approach which is based on local orbitals within a nonlocal pseudopotential scheme. FIREBALL is based on a self-consistent functional.
+				</p>
+				<p>
+					<strong>Optimization</strong>: we optimize the molecule for 250 fs to minimize the energy of the structure.<br>
+					<strong>Molecular Dynamics</strong>: The system is allowed to evolve at    300 K for 15000 fs using ground state MD. This step will provide us with 60000 structures of the system.<br>
+					<strong>Molecular Dynamics in Electronic Transition</strong> :  500 structures are randomly chosen from MD. After 1000 fs, virtually all structures have decayed from LUMO to HOMO. Each trajectory is then analyzed.
+				</p>
+				
+			
+			</ul>
+</div>
+</div>
+
+
+
+{% endblock %}
+</html>
